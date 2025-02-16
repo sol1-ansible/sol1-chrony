@@ -1,0 +1,11 @@
+---
+- name: Chrony | Install Chrony
+  include_tasks: install.yml
+    
+- name: Chrony | Configure chrony server
+  include_tasks: server.yml
+  when: chrony_allowed_networks
+
+- name: Chrony | Configure chrony client
+  include_tasks: client.yml
+  when: not chrony_allowed_networks

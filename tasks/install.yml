@@ -1,0 +1,5 @@
+---
+- name: Chrony | Install chrony
+  apt:
+    name: chrony
+    state: present

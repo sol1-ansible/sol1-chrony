@@ -1,0 +1,4 @@
+# Ansible Managed
+{% for server in chrony_upstream_servers %}
+pool {{ server }} iburst
+{% endfor %}

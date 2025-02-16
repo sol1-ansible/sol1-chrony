@@ -1,0 +1,12 @@
+---
+# Chrony Client Defaults
+chrony_upstream_servers:
+  - 0.au.pool.ntp.org
+  - 1.au.pool.ntp.org
+  - 2.au.pool.ntp.org
+  - 3.au.pool.ntp.org
+
+#chrony_allowed_networks:
+#  - 192.168.1.0/24
+#  - ff03:4:0:2::/64
+

@@ -1,0 +1,4 @@
+# Ansible Managed
+{% for network in chrony_allowed_networks %}
+allow "{{ network }}"
+{% endfor %}

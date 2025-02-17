@@ -4,8 +4,8 @@
     
 - name: Chrony | Configure chrony server
   include_tasks: server.yml
-  when: chrony_allowed_networks
+  when: chrony_allowed_networks is defined
 
 - name: Chrony | Configure chrony client
   include_tasks: client.yml
-  when: not chrony_allowed_networks
+  when: chrony_allowed_networks is not defined

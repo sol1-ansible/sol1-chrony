@@ -1,5 +1,7 @@
 ---
 - name: Chrony | Install chrony
-  apt:
+  ansible.builtin.apt:
     name: chrony
     state: present
+  notify:
+    - Restart chrony service

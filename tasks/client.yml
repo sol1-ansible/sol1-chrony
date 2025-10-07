@@ -1,26 +1,24 @@
 ---
 - name: Chrony | Ensure /etc/chrony/conf.d/ directory exists
-  file:
+  ansible.builtin.file:
     path: /etc/chrony/conf.d/
     state: directory
     mode: '0755'
 
-- name: Chrony | Remove pool line from chrony.conf when using a custom upstream_servers list is in use
-  lineinfile:
+- name: Chrony | Remove the default pool line from chrony.conf
+  ansible.builtin.lineinfile:
     path: /etc/chrony/chrony.conf
     regexp: '^pool '
     state: absent
-    backup: yes
-  when: chrony_upstream_servers
+    backup: true
+  when: chrony_remove_default_pool
+  notify:
+    - Restart chrony service
 
-- name: Chrony | Deploy server pool list to /etc/chrony/conf.d/upstream_servers.conf from template when chrony_upstream_servers is defined
-  template:
+- name: Chrony | Deploy server pool list from template
+  ansible.builtin.template:
     src: upstream_servers.conf.j2
     dest: /etc/chrony/conf.d/upstream_servers.conf
   when: chrony_upstream_servers
-
-- name: Chrony | Restart Chrony
-  systemd:
-    name: "chrony"
-    state: restarted
-    enabled: yes
+  notify:
+    - Restart chrony service

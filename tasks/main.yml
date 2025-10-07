@@ -1,11 +1,11 @@
 ---
 - name: Chrony | Install Chrony
-  include_tasks: install.yml
-    
+  ansible.builtin.include_tasks: install.yml
+
 - name: Chrony | Configure chrony server
-  include_tasks: server.yml
+  ansible.builtin.include_tasks: server.yml
   when: chrony_allowed_networks is defined
 
 - name: Chrony | Configure chrony client
-  include_tasks: client.yml
-  when: chrony_allowed_networks is not defined
+  ansible.builtin.include_tasks: client.yml
+  when: chrony_upstream_servers is defined

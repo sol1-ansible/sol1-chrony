@@ -9,6 +9,6 @@
   ansible.builtin.template:
     src: allowed_networks.conf.j2
     dest: /etc/chrony/conf.d/allowed_networks.conf
-  when: chrony_allowed_networks
+    mode: '0755'
   notify:
     - Restart chrony service

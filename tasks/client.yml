@@ -20,6 +20,5 @@
     src: upstream_servers.conf.j2
     dest: /etc/chrony/conf.d/upstream_servers.conf
     mode: '0755'
-  when: chrony_upstream_servers
   notify:
     - Restart chrony service

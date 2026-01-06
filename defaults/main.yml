@@ -10,3 +10,4 @@ chrony_upstream_servers:
 #  - 192.168.1.0/24
 #  - ff03:4:0:2::/64
 
+chrony_remove_default_pool: false

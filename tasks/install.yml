@@ -5,3 +5,5 @@
     state: present
   notify:
     - Restart chrony service
+  retries: 3
+  delay: 10

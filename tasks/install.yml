@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name: chrony
     state: present
+    update_cache: true
   notify:
     - Restart chrony service
   retries: 3

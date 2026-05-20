@@ -4,7 +4,6 @@
     name: chrony
     state: present
     update_cache: true
+    lock_timeout: 600
   notify:
     - Restart chrony service
-  retries: 3
-  delay: 10
